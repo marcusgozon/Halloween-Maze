@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#17090c">
+  <title>Halloween Candy Maze</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="wordmark" href="#" aria-label="Haunted Maze home">NIGHT<span>SHIFT</span></a>
+      <div class="topbar-tag"><span class="status-light"></span> HAUNTED ARCADE</div>
+    </header>
+
+    <section id="welcome-panel" class="welcome-panel" aria-labelledby="welcome-title">
+      <p class="eyebrow">PLAYER REGISTRATION</p>
+      <h1 id="welcome-title">Who dares enter<br>the <span>maze?</span></h1>
+      <p class="welcome-copy">Write your name on the guest list before the first level begins.</p>
+      <form id="player-form" class="player-form">
+        <label for="player-name">Your name</label>
+        <div class="name-entry">
+          <input id="player-name" name="playerName" type="text" maxlength="24" autocomplete="given-name" placeholder="Enter your name" required>
+          <button class="control-button start-button" type="submit">START LEVEL 1 <span aria-hidden="true">→</span></button>
+        </div>
+      </form>
+      <div class="haunt-decor welcome-decor" aria-hidden="true">
+        <img src="assets/pumpkin.png" alt="">
+        <span>EEK!</span>
+        <img class="decor-bat" src="assets/bat.png" alt="">
+      </div>
+    </section>
+
+    <section class="game-layout" aria-labelledby="game-title" hidden>
+      <div class="intro">
+        <p class="eyebrow">FIVE LEVELS. ONE WAY OUT.</p>
+        <h1 id="game-title">The <span>Haunted</span><br>Hedge Maze</h1>
+        <p class="intro-copy">Help your ghost find the candy and escape through the red door. Pick a neighboring tile to move.</p>
+        <div class="haunt-decor" aria-hidden="true">
+          <img src="assets/pumpkin.png" alt="">
+          <span>EEK!</span>
+          <img class="decor-bat" src="assets/bat.png" alt="">
+        </div>
+        <div class="legend" aria-label="Maze legend">
+          <span><i class="legend-dot ghost-dot"></i> GHOST</span>
+          <span><i class="legend-dot candy-dot"></i> CANDY</span>
+          <span><i class="legend-dot goal-dot"></i> EXIT</span>
+        </div>
+      </div>
+
+      <section class="board-panel" aria-label="Interactive maze game">
+        <div class="board-topline">
+          <div>
+            <p class="board-label">NIGHT RUN <span id="level-indicator">LEVEL 1 / 5</span></p>
+            <p id="level-title" class="board-title">The Pumpkin Patch</p>
+          </div>
+          <div class="move-counter" aria-live="polite"><span id="move-count">00</span><small>STEPS</small></div>
+        </div>
+
+        <div id="level-progress" class="level-progress" role="group" aria-label="Level progress"></div>
+
+        <div id="maze" class="maze" role="grid" aria-label="Haunted hedge maze"></div>
+
+        <div class="board-footer">
+          <div class="game-status">
+            <p id="game-message" aria-live="polite">Find the candy, then reach the door.</p>
+            <div class="collectible-counter" aria-label="Candy collected">
+              <img src="assets/candy.png" alt="">
+              <span><b id="candy-count">0 / 0</b><small>CANDY</small></span>
+            </div>
+          </div>
+          <div class="controls">
+            <button id="reset-button" class="control-button" type="button" aria-label="Restart maze" title="Restart maze"><span aria-hidden="true">↻</span> RESTART</button>
+            <button id="music-button" class="control-button music-button" type="button" aria-pressed="false" aria-label="Play background music"><span aria-hidden="true">♫</span> MUSIC <span class="music-state">OFF</span></button>
+            <button id="next-level-button" class="control-button next-level-button" type="button" hidden>NEXT LEVEL <span aria-hidden="true">→</span></button>
+          </div>
+        </div>
+      </section>
+    </section>
+    <section id="lesson-panel" class="lesson-panel" aria-labelledby="lesson-title" hidden>
+      <p class="eyebrow">YOU MADE IT OUT</p>
+      <h2 id="congratulations-heading" class="celebration-title"></h2>
+      <h3 id="lesson-title" class="lesson-title">The maze is a map of a problem.</h3>
+      <p class="lesson-intro">Every turn you took has a little computer science hiding inside it.</p>
+      <div class="lesson-grid">
+        <article>
+          <span class="lesson-number">01</span>
+          <h3>The map: data structure</h3>
+          <p>Think of each open tile as a dot on a map. A line joins two dots when you can walk between them. The dots and lines make a <strong>graph</strong>, a way to store places and paths.</p>
+        </article>
+        <article>
+          <span class="lesson-number">02</span>
+          <h3>Your plan: algorithm</h3>
+          <p>An <strong>algorithm</strong> is a set of steps for solving a problem. In this game: start here, move along a path, collect candy, and find the door. Your moves are one route through the map.</p>
+        </article>
+        <article>
+          <span class="lesson-number">03</span>
+          <h3>How computers find a way</h3>
+          <p>A computer can check connected tiles and remember where it has been. This is called <strong>search</strong>. Breadth-first search checks nearby tiles first, so it can find the shortest route when every step costs the same.</p>
+        </article>
+      </div>
+      <button id="play-again-button" class="control-button play-again-button" type="button"><span aria-hidden="true">↻</span> PLAY AGAIN</button>
+    </section>
+    <div id="confetti-layer" class="confetti-layer" aria-hidden="true"></div>
+    <footer class="page-footer"><span>KEEP TO THE PATH.</span><span>THE HEDGES ARE LISTENING.</span></footer>
+  </main>
+  <audio id="bg-music" src="assets/bg-music.mp3" loop preload="none"></audio>
+  <audio id="cheer-audio" src="assets/cheer.mp3" preload="auto"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
